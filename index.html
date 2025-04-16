@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>نادية للمأكولات - خدمة تقديم الطعام المميزة</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        body {
+            background-color: #f5f5f5;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .logo {
+            font-size: 2rem;
+            color: #e67e22;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo i {
+            font-size: 2.2rem;
+        }
+
+        @keyframes wiggle {
+            0%, 100% { transform: rotate(-15deg); }
+            50% { transform: rotate(-5deg); }
+        }
+
+        /* Header Styles */
+        header {
+            background-color: #fff;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-menu a {
+            color: #333;
+            text-decoration: none;
+            font-size: 1.1rem;
+            transition: color 0.3s;
+        }
+
+        .nav-menu a:hover {
+            color: #e67e22;
+        }
+
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+            }
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1555244162-803834f70033');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            color: white;
+            margin-top: 60px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            background-color: #e67e22;
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+            border: 2px solid #e67e22;
+            font-weight: bold;
+            box-shadow: 0 4px 15px rgba(230, 126, 34, 0.3);
+        }
+
+        .btn:hover {
+            background-color: transparent;
+            color: #e67e22;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(230, 126, 34, 0.4);
+        }
+
+        .hero-content {
+            width: 100%;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+                box-shadow: 0 4px 15px rgba(230, 126, 34, 0.3);
+            }
+            50% {
+                transform: scale(1.05);
+                box-shadow: 0 6px 25px rgba(230, 126, 34, 0.5);
+            }
+            100% {
+                transform: scale(1);
+                box-shadow: 0 4px 15px rgba(230, 126, 34, 0.3);
+            }
+        }
+
+        /* About Section */
+        .about {
+            padding: 5rem 0;
+            background-color: #fff;
+        }
+
+        .about-content {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .about-image {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+        }
+
+        .about-image img {
+            width: 45%;
+            max-height: 300px;
+            object-fit: cover;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            transition: transform 0.3s ease;
+        }
+
+        .about-image img:hover {
+            transform: scale(1.05);
+        }
+
+        .about-text {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .about-text p {
+            font-family: 'Traditional Arabic', serif;
+            font-size: 1.4rem;
+            line-height: 1.8;
+            color: #333;
+            margin-bottom: 1rem;
+        }
+
+        .about-text p:last-child {
+            color: #e67e22;
+            font-weight: bold;
+            font-size: 1.3rem;
+        }
+
+        @media (max-width: 768px) {
+            .about-image {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .about-image img {
+                width: 100%;
+                max-width: 400px;
+            }
+        }
+
+        /* Services Section */
+        .services {
+            padding: 5rem 0;
+            background-color: #f9f9f9;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .service-card {
+            background: #fff;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            text-align: center;
+            transition: transform 0.3s ease;
+            overflow: hidden;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .service-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin-bottom: 1.5rem;
+        }
+
+        .service-card h3 {
+            color: #e67e22;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .service-card p {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        /* Gallery Section */
+        .gallery {
+            padding: 5rem 0;
+            background-color: #fff;
+            overflow: hidden;
+            direction: ltr; /* لضمان حركة الصور من اليمين إلى اليسار */
+        }
+
+        .gallery-grid {
+            display: flex;
+            gap: 1.5rem;
+            padding: 1rem;
+            animation: slideGallery 60s linear infinite; /* تم تغيير السرعة من 30 إلى 60 ثانية */
+            width: max-content;
+        }
+
+        .gallery-grid:hover {
+            animation-play-state: paused;
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+            flex: 0 0 300px;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.05);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 10px;
+            transition: filter 0.3s ease;
+        }
+
+        .gallery-item:hover img {
+            filter: brightness(0.8);
+        }
+
+        @keyframes slideGallery {
+            0% {
+                transform: translateX(100%);
+            }
+            100% {
+                transform: translateX(-100%);
+            }
+        }
+
+        .gallery .container {
+            overflow: hidden;
+            direction: rtl; /* للحفاظ على اتجاه RTL للنص */
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal img {
+            max-width: 90%;
+            max-height: 90vh;
+            border-radius: 5px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.3);
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            color: white;
+            font-size: 30px;
+            cursor: pointer;
+            background: none;
+            border: none;
+            padding: 10px;
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 5rem 0;
+            background-color: #2c3e50;
+            color: white;
+        }
+
+        .contact-info {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .contact-info p {
+            margin: 1rem 0;
+            font-size: 1.1rem;
+        }
+
+        .contact-info i {
+            margin-left: 10px;
+            color: #e67e22;
+        }
+
+        .map-container {
+            width: 100%;
+            height: 400px;
+            border-radius: 10px;
+            overflow: hidden;
+            margin-top: 2rem;
+        }
+
+        .map-container iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero p {
+                font-size: 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <div class="logo">
+                <i class="fas fa-utensils" style="transform: rotate(-15deg); animation: wiggle 3s ease-in-out infinite;"></i>
+                <span style="display: inline-block; padding: 0 15px; position: relative;">
+                    Traiteur Nadia
+                    <i class="fas fa-crown" style="position: absolute; top: -15px; right: 50%; transform: translateX(50%); font-size: 1rem; color: #ffd700;"></i>
+                </span>
+                <i class="fas fa-cookie" style="transform: rotate(15deg); animation: wiggle 3s ease-in-out infinite reverse;"></i>
+            </div>
+            <div class="nav-menu">
+                <a href="#hero">الرئيسية</a>
+                <a href="#about">من نحن</a>
+                <a href="#services">خدماتنا</a>
+                <a href="#gallery">معرض الصور</a>
+                <a href="#contact">اتصل بنا</a>
+            </div>
+        </nav>
+    </header>
+
+    <section class="hero" id="hero">
+        <div class="hero-content container">
+            <h1>مرحباً بكم مع نادية للمأكولات</h1>
+            <p>نقدم أشهى المأكولات لجميع الأفراح و المناسبات</p>
+            <a href="#contact" class="btn" style="font-size: 1.4rem; padding: 1.2rem 3rem; margin-top: 2rem; animation: pulse 2s infinite;">تواصل معنا الآن</a>
+        </div>
+    </section>
+
+    <section class="about" id="about">
+        <div class="container">
+            <h2 class="section-title" style="text-align: center; color: #e67e22; margin-bottom: 2rem; font-size: 2.5rem; text-decoration: underline">من نحن</h2>
+            <div class="about-content">
+                <div class="about-image">
+                    <img src="image/WhatsApp Image 2025-04-14 à 20.10.56_99a49302.jpg" alt="صورة مأكولات نادية">
+                    <img src="image/WhatsApp Image 2025-04-14 à 20.10.59_2846e9bf.jpg" alt="صورة مأكولات نادية">
+                </div>
+                <div class="about-text">
+                    <p>نحن متخصصون في تقديم أفضل خدمات الطعام للمناسبات والحفلات. نمتاز بالجودة العالية والذوق الرفيع في اختيار وتحضير الأطباق.</p>
+                    <p>خبرة طويلة في مجال المأكولات وتقديم الطعام</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="services" id="services">
+        <div class="container">
+            <h2 class="section-title">خدماتنا</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <img src="image/WhatsApp Image 2025-04-14 à 20.11.03_7606ed89.jpg" alt="خدمة حفلات الزفاف">
+                    <h3>حفلات الزفاف</h3>
+                    <p>قائمة طعام متكاملة لحفلات الزفاف</p>
+                </div>
+                <div class="service-card">
+                    <img src="image/WhatsApp Image 2025-04-14 à 20.11.00_10c04132.jpg" alt="خدمة المناسبات الخاصة">
+                    <h3>المناسبات الخاصة</h3>
+                    <p>خدمات مميزة للمناسبات العائلية</p>
+                </div>
+                <div class="service-card">
+                    <img src="image/WhatsApp Image 2025-04-14 à 20.10.57_552585cf.jpg" alt="خدمة المؤتمرات">
+                    <h3>المؤتمرات</h3>
+                    <p>خدمات الضيافة للمؤتمرات والاجتماعات</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="gallery" id="gallery">
+        <div class="container">
+            <h2 class="section-title">معرض الصور</h2>
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="image/WhatsApp Image 2025-04-14 à 20.10.42_0d238c7a.jpg" alt="طعام جديد">
+                </div>
+                <div class="gallery-item">
+                    <img src="image/WhatsApp Image 2025-04-14 à 20.10.58_50619ce9.jpg" alt="طعام جديد">
+                </div>
+                <div class="gallery-item">
+                    <img src="image/WhatsApp Image 2025-04-14 à 20.10.58_4614d8b1.jpg" alt="طعام جديد">
+                </div>
+                <div class="gallery-item">
+                    <img src="image/WhatsApp Image 2025-04-14 à 20.10.56_58e6b396.jpg" alt="طعام جديد">
+                </div>
+                <div class="gallery-item">
+                    <img src="image/WhatsApp Image 2025-04-14 à 20.11.00_1b870a74.jpg" alt="طعام جديد">
+                </div>
+                <div class="gallery-item">
+                    <img src="image/WhatsApp Image 2025-04-14 à 20.10.59_0554995c.jpg" alt="طعام جديد">
+                </div>
+                <div class="gallery-item">
+                    <img src="image/WhatsApp Image 2025-04-14 à 20.10.59_2ad8ce92.jpg" alt="طعام جديد">
+                </div>
+                <div class="gallery-item">
+                    <img src="image/WhatsApp Image 2025-04-14 à 20.10.59_1c3ee5c8.jpg" alt="طعام جديد">
+                </div>
+                <div class="gallery-item">
+                    <img src="image/WhatsApp Image 2025-04-14 à 20.11.02_435a31ac.jpg" alt="طعام جديد">
+                </div>
+                <div class="gallery-item">
+                    <img src="image/WhatsApp Image 2025-04-14 à 20.10.56_99a49302.jpg" alt="طعام 1">
+                </div>
+                <div class="gallery-item">
+                    <img src="image/WhatsApp Image 2025-04-14 à 20.10.56_9048b6a9.jpg" alt="طعام 2">
+                </div>
+                <div class="gallery-item">
+                    <img src="image/WhatsApp Image 2025-04-14 à 20.10.58_57d2e6e2.jpg" alt="طعام 3">
+                </div>
+                <div class="gallery-item">
+                    <img src="image/WhatsApp Image 2025-04-14 à 20.10.58_9ebee5bd.jpg" alt="طعام 4">
+                </div>
+                <div class="gallery-item">
+                    <img src="image/WhatsApp Image 2025-04-14 à 20.10.59_2846e9bf.jpg" alt="طعام 5">
+                </div>
+                <div class="gallery-item">
+                    <img src="image/WhatsApp Image 2025-04-14 à 20.10.57_5f48c828.jpg" alt="طعام 6">
+                </div>
+                <!-- كرر الصور لتأثير التمرير المستمر -->
+                <div class="gallery-item">
+                    <img src="image/WhatsApp Image 2025-04-14 à 20.10.57_552585cf.jpg" alt="طعام 1">
+                </div>
+                <div class="gallery-item">
+                    <img src="image/WhatsApp Image 2025-04-14 à 20.10.57_c535a0ac.jpg" alt="طعام 2">
+                </div>
+                <div class="gallery-item">
+                    <img src="image/WhatsApp Image 2025-04-14 à 20.10.58_57d2e6e2.jpg" alt="طعام 3">
+                </div>
+                <div class="gallery-item">
+                    <img src="image/WhatsApp Image 2025-04-14 à 20.10.56_2efdf3ff.jpg" alt="طعام 4">
+                </div>
+                <div class="gallery-item">
+                    <img src="image/WhatsApp Image 2025-04-14 à 20.10.59_2846e9bf.jpg" alt="طعام 5">
+                </div>
+                <div class="gallery-item">
+                    <img src="image/WhatsApp Image 2025-04-14 à 20.11.00_10c04132.jpg" alt="طعام 6">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modal for Gallery Images -->
+    <div class="modal" id="imageModal">
+        <button class="modal-close" onclick="closeModal()">×</button>
+        <img src="" alt="صورة كبيرة" id="modalImage">
+    </div>
+
+    <script>
+        const modal = document.getElementById('imageModal');
+        const modalImg = document.getElementById('modalImage');
+        const galleryItems = document.querySelectorAll('.gallery-item img');
+
+        // فتح النافذة المنبثقة عند النقر على الصورة
+        galleryItems.forEach(img => {
+            img.addEventListener('click', () => {
+                modal.classList.add('active');
+                modalImg.src = img.src;
+            });
+        });
+
+        // إغلاق النافذة المنبثقة
+        function closeModal() {
+            modal.classList.remove('active');
+        }
+
+        // إغلاق النافذة المنبثقة عند النقر خارج الصورة
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                closeModal();
+            }
+        });
+
+        // إغلاق النافذة المنبثقة عند الضغط على زر ESC
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                closeModal();
+            }
+        });
+    </script>
+
+    <section class="contact" id="contact">
+        <div class="container">
+            <h2 class="section-title">اتصل بنا</h2>
+            <div class="contact-info">
+                <p><i class="fas fa-phone-alt"></i> الهاتف: XXX-XXXXXXX</p>
+                <p><i class="fas fa-envelope"></i> البريد الإلكتروني: info@nadiafood.com</p>
+                <p><i class="fas fa-map-marker-alt"></i> العنوان: شارع محمد الخامس، رقم 123، الرباط، المغرب</p>
+                <p style="margin-top: 1rem;">
+                    <a href="https://maps.google.com" target="_blank" style="color: #e67e22; text-decoration: none;">
+                        <i class="fas fa-map-marker-alt" style="margin-left: 5px;"></i>
+                        افتح الموقع في الخريطة
+                    </a>
+                </p>
+            </div>
+            <div class="map-container">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d106376.72689907721!2d-6.890767242187495!3d34.02032249999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xda76b871f50c5c1%3A0x7ac946ed7408046f!2sRabat%2C%20Morocco!5e0!3m2!1sen!2sus!4v1681644151776!5m2!1sar!2sus" allowfullscreen="" loading="lazy"></iframe>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
